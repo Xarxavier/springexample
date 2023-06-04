@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +18,7 @@ public class InterceptorTest implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object handler) throws Exception{
         _logger.info("esto es un test de log pre");
+      //  response.sendError(HttpStatus.FORBIDDEN.value(), "No estás autorizado para acceder a este recurso");
         return true;
     }
     @Override
@@ -24,3 +26,4 @@ public class InterceptorTest implements HandlerInterceptor {
         _logger.info("esto es un test de log post");
     }
 }
+
